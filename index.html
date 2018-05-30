@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<style>
+table {
+    margin:10px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="profile">
+<table class="table table-bordered">
+<thead>
+<tr>
+    <th>名前</th>
+    <th>年齢</th>
+    <th>身長/体重</th>
+</tr>
+</thead>
+<tbody>
+<profile_list
+    v-for="prof in profData" 
+    v-bind:prof="prof"
+    v-bind:key="prof.id">
+</profile_list>
+</tbody>
+</table>
+</div>
+
+<script>
+
+Vue.component("profile_list", {
+    props: ["prof"],
+    template: "<tr><td>{{prof.name}}</td><td>{{prof.age}}</td><td>{{prof.hw}}</td></tr>"
+
+});
+
+new Vue({
+    el: "#profile",
+    data: {
+        profData: [
+            { id: "01", name: "城ヶ崎莉嘉", age: "12", hw: "149cm/36kg" },
+            { id: "02", name: "城ヶ崎莉嘉", age: "12", hw: "149cm/36kg" }
+        ]
+    }
+});
+
+</script>
+
+</body>
+</html>
+
